@@ -15,6 +15,9 @@ pipeline {
             }
         }
         stage('step2') {
+            when {
+                expression { BRANCH ==~ /(Master|Hotfix)/}
+            }
             steps {
                 echo 'step 2'
                 sh 'printenv'
