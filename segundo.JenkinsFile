@@ -1,19 +1,23 @@
 pipeline {
     agent any
+    environment {
+        BRANCH = 'Master'
+    }
+
     stages {
         stage('step1') {
+            environment {
+                OUTRA = 'Master 2'
+            }
             steps {
                 echo 'step 1'
+                sh 'printenv'
             }
         }
         stage('step2') {
             steps {
                 echo 'step 2'
-            }
-        }
-        stage('step3') {
-            steps {
-                echo 'step3'
+                sh 'printenv'
             }
         }
     }
